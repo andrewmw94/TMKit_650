@@ -1,0 +1,284 @@
+frame base_link-base_fixed_joint {
+	parent world_joint;
+	type fixed;
+	quaternion [0.0, -0.0, -0.9999999999999991, -0.00000004371139000186242];
+}
+
+frame block_a {
+	parent front_table;
+	type fixed;
+	translation [0.0, 0.25, 0.05509999877689406];
+	geometry {
+		shape box;
+		dimension [0.09999999776482582, 0.09999999776482582, 0.09999999776482582];
+		color [1.0, 0.0, 0.0];
+		alpha 0.5;
+	}
+}
+
+frame bookshelf {
+	type fixed;
+	translation [0.0, -1.149999976158142, 0.0];
+	geometry {
+		shape box;
+		dimension [1.0, 0.009999999776482582, 5.0];
+		color [0.0, 0.0, 0.0];
+		alpha 1.0;
+	}
+}
+
+frame curtain {
+	type fixed;
+	translation [-0.3499999940395355, 0.0, 0.0];
+	geometry {
+		shape box;
+		dimension [0.009999999776482582, 5.0, 5.0];
+		color [0.0, 0.0, 0.0];
+		alpha 1.0;
+	}
+}
+
+frame ee_fixed_joint {
+	parent wrist_3_joint;
+	type fixed;
+	translation [0.0, 0.08229999989271164, 0.0];
+	quaternion [0.0, 0.0, 0.7071067966408575, 0.7071067657322372];
+}
+
+frame ee_link-collision {
+	parent ee_fixed_joint;
+	type fixed;
+	translation [-0.009999999776482582, 0.0, 0.0];
+	geometry {
+		visual 0;
+		shape box;
+		dimension [0.009999999776482582, 0.009999999776482582, 0.009999999776482582];
+		color [0.5, 0.5, 0.5];
+		alpha 1.0;
+	}
+}
+
+frame elbow_joint {
+	parent shoulder_lift_joint;
+	type revolute;
+	translation [0.0, -0.11969999969005585, 0.42500001192092896];
+	variable elbow_joint;
+	axis [0.0, 1.0, 0.0];
+	offset 0.0;
+	geometry {
+		visual 0;
+		mesh "/home/awells/ur5/src/universal_robot/ur_description/meshes/ur5/collision/forearm.stl";
+		color [0.699999988079071, 0.699999988079071, 0.699999988079071];
+		alpha 1.0;
+	}
+	geometry {
+		collision 0;
+		mesh "/home/awells/ur5/src/universal_robot/ur_description/meshes/ur5/visual/forearm.dae";
+		color [0.699999988079071, 0.699999988079071, 0.699999988079071];
+		alpha 1.0;
+	}
+}
+
+frame end_effector_grasp {
+	parent ee_fixed_joint;
+	type fixed;
+	translation [0.0, 0.0, 0.07500000298023224];
+	quaternion [0.0, 1.0, 0.0, 0.0];
+}
+
+frame forearm_link-inertial {
+	parent elbow_joint;
+	type fixed;
+	translation [0.0, 0.0, 0.25];
+}
+
+frame front_table {
+	parent table_base;
+	type fixed;
+	translation [0.4000000059604645, 0.0, 0.0];
+	geometry {
+		shape box;
+		dimension [0.75, 0.75, 0.009999999776482582];
+		color [0.6000000238418579, 0.30000001192092896, 0.6000000238418579];
+		alpha 0.5;
+	}
+}
+
+frame lab_front_table {
+	type fixed;
+	translation [0.800000011920929, -0.20000000298023224, 0.0];
+	geometry {
+		shape box;
+		dimension [0.5, 1.0, 0.009999999776482582];
+		color [0.6000000238418579, 0.30000001192092896, 0.6000000238418579];
+		alpha 0.5;
+	}
+}
+
+frame left_table {
+	parent lab_front_table;
+	type fixed;
+	translation [-0.25, 0.75, 0.0];
+	quaternion [0.0, 0.0, 0.7071067811865475, 0.7071067811865476];
+	geometry {
+		shape box;
+		dimension [0.5, 1.0, 0.009999999776482582];
+		color [0.6000000238418579, 0.30000001192092896, 0.6000000238418579];
+		alpha 0.5;
+	}
+}
+
+frame right_table {
+	parent lab_front_table;
+	type fixed;
+	translation [-0.75, -0.25, 0.0];
+	quaternion [0.0, 0.0, -0.7071067811865475, 0.7071067811865476];
+	geometry {
+		shape box;
+		dimension [0.5, 1.0, 0.009999999776482582];
+		color [0.6000000238418579, 0.30000001192092896, 0.6000000238418579];
+		alpha 0.5;
+	}
+}
+
+frame shoulder_lift_joint {
+	parent shoulder_pan_joint;
+	type revolute;
+	translation [0.0, 0.1358499974012375, 0.0];
+	variable shoulder_lift_joint;
+	axis [0.0, 1.0, 0.0];
+	offset 0.0;
+	geometry {
+		visual 0;
+		mesh "/home/awells/ur5/src/universal_robot/ur_description/meshes/ur5/collision/upperarm.stl";
+		color [0.699999988079071, 0.699999988079071, 0.699999988079071];
+		alpha 1.0;
+	}
+	geometry {
+		collision 0;
+		mesh "/home/awells/ur5/src/universal_robot/ur_description/meshes/ur5/visual/upperarm.dae";
+		color [0.699999988079071, 0.699999988079071, 0.699999988079071];
+		alpha 1.0;
+	}
+}
+
+frame shoulder_pan_joint {
+	parent world_joint;
+	type revolute;
+	translation [0.0, 0.0, 0.08915899693965912];
+	variable shoulder_pan_joint;
+	axis [0.0, 0.0, 1.0];
+	offset 0.0;
+	geometry {
+		visual 0;
+		mesh "/home/awells/ur5/src/universal_robot/ur_description/meshes/ur5/collision/shoulder.stl";
+		color [0.699999988079071, 0.699999988079071, 0.699999988079071];
+		alpha 1.0;
+	}
+	geometry {
+		collision 0;
+		mesh "/home/awells/ur5/src/universal_robot/ur_description/meshes/ur5/visual/shoulder.dae";
+		color [0.699999988079071, 0.699999988079071, 0.699999988079071];
+		alpha 1.0;
+	}
+}
+
+frame table_base {
+	type fixed;
+	translation [0.10000000149011612, -0.30000001192092896, 0.0];
+	quaternion [0.0, 0.0, -0.3826834323650898, 0.9238795325112867];
+}
+
+frame upper_arm_link-inertial {
+	parent shoulder_lift_joint;
+	type fixed;
+	translation [0.0, 0.0, 0.2800000011920929];
+}
+
+frame world_joint {
+	type fixed;
+	geometry {
+		visual 0;
+		mesh "/home/awells/ur5/src/universal_robot/ur_description/meshes/ur5/collision/base.stl";
+		color [0.699999988079071, 0.699999988079071, 0.699999988079071];
+		alpha 1.0;
+	}
+	geometry {
+		collision 0;
+		mesh "/home/awells/ur5/src/universal_robot/ur_description/meshes/ur5/visual/base.dae";
+		color [0.699999988079071, 0.699999988079071, 0.699999988079071];
+		alpha 1.0;
+	}
+}
+
+frame wrist_1_joint {
+	parent elbow_joint;
+	type revolute;
+	translation [0.0, 0.0, 0.3922500014305115];
+	quaternion [0.0, 0.7071067966408575, 0.0, 0.7071067657322372];
+	variable wrist_1_joint;
+	axis [0.0, 1.0, 0.0];
+	offset 0.0;
+	geometry {
+		visual 0;
+		mesh "/home/awells/ur5/src/universal_robot/ur_description/meshes/ur5/collision/wrist1.stl";
+		color [0.699999988079071, 0.699999988079071, 0.699999988079071];
+		alpha 1.0;
+	}
+	geometry {
+		collision 0;
+		mesh "/home/awells/ur5/src/universal_robot/ur_description/meshes/ur5/visual/wrist1.dae";
+		color [0.699999988079071, 0.699999988079071, 0.699999988079071];
+		alpha 1.0;
+	}
+}
+
+frame wrist_2_joint {
+	parent wrist_1_joint;
+	type revolute;
+	translation [0.0, 0.09300000220537186, 0.0];
+	variable wrist_2_joint;
+	axis [0.0, 0.0, 1.0];
+	offset 0.0;
+	geometry {
+		visual 0;
+		mesh "/home/awells/ur5/src/universal_robot/ur_description/meshes/ur5/collision/wrist2.stl";
+		color [0.699999988079071, 0.699999988079071, 0.699999988079071];
+		alpha 1.0;
+	}
+	geometry {
+		collision 0;
+		mesh "/home/awells/ur5/src/universal_robot/ur_description/meshes/ur5/visual/wrist2.dae";
+		color [0.699999988079071, 0.699999988079071, 0.699999988079071];
+		alpha 1.0;
+	}
+}
+
+frame wrist_3_joint {
+	parent wrist_2_joint;
+	type revolute;
+	translation [0.0, 0.0, 0.09465000033378601];
+	variable wrist_3_joint;
+	axis [0.0, 1.0, 0.0];
+	offset 0.0;
+	geometry {
+		visual 0;
+		mesh "/home/awells/ur5/src/universal_robot/ur_description/meshes/ur5/collision/wrist3.stl";
+		color [0.699999988079071, 0.699999988079071, 0.699999988079071];
+		alpha 1.0;
+	}
+	geometry {
+		collision 0;
+		mesh "/home/awells/ur5/src/universal_robot/ur_description/meshes/ur5/visual/wrist3.dae";
+		color [0.699999988079071, 0.699999988079071, 0.699999988079071];
+		alpha 1.0;
+	}
+}
+
+frame wrist_3_link-tool0_fixed_joint {
+	parent wrist_3_joint;
+	type fixed;
+	translation [0.0, 0.08229999989271164, 0.0];
+	quaternion [-0.7071067966408575, 0.0, 0.0, 0.7071067657322372];
+}
+

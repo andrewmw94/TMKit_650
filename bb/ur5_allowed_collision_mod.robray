@@ -1,0 +1,10 @@
+allow_collision "base_link-base_fixed_joint" "shoulder_lift_joint";
+allow_collision "ee_link-collision" "wrist_1_joint";
+allow_collision "ee_link-collision" "wrist_2_joint";
+allow_collision "ee_link-collision" "wrist_3_joint";
+allow_collision "forearm_link-inertial" "upper_arm_link-inertial";
+allow_collision "forearm_link-inertial" "wrist_1_joint";
+allow_collision "shoulder_lift_joint" "upper_arm_link-inertial";
+allow_collision "wrist_1_joint" "wrist_2_joint";
+allow_collision "wrist_1_joint" "wrist_3_joint";
+allow_collision "wrist_2_joint" "wrist_3_joint";

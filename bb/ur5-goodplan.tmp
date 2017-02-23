@@ -1,0 +1,18 @@
+# Semantics: tm-blocks.py
+# Task Domain: tm-blocks.pddl
+# Start Scene: package://ur_description/urdf/ur5_robotiq_robot_limited.urdf
+# Start Scene: sussman-0.robray
+# Start Scene: ur5_robotiq_allowed_collisions.robray
+# Goal Scene: sussman-1.robray
+m wrist_3_joint wrist_2_joint wrist_1_joint shoulder_pan_joint shoulder_lift_joint robotiq_85_right_knuckle_joint robotiq_85_right_inner_knuckle_joint robotiq_85_right_finger_tip_joint robotiq_85_left_knuckle_joint robotiq_85_left_inner_knuckle_joint robotiq_85_left_finger_tip_joint elbow_joint
+p 0.0 0.0 -1.57 0.0 -1.57 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+a PICK-UP block_a front_table -2 0
+m shoulder_pan_joint shoulder_lift_joint elbow_joint wrist_1_joint wrist_2_joint wrist_3_joint 
+p 0.0	-1.57	0.0	-1.57	0.0	0.0	
+p 0.2773369740149165	-1.3365871619747596	1.8702117014892108	-2.1044037809190734	-1.5707951168519259	-1.2942531855521258	
+r block_a end_effector_grasp
+a PUT-DOWN block_a front_table 0 0
+m shoulder_pan_joint shoulder_lift_joint elbow_joint wrist_1_joint wrist_2_joint wrist_3_joint 
+p 0.2773369740149165	-1.3365871619747596	1.8702117014892108	-2.1044037809190734	-1.5707951168519259	-1.2942531855521258	
+p -0.22814913161668365	-1.4501588245209458	2.0549699263098824	-2.1755924109097524	-1.5708023458480955	-1.7997395933302998	
+r block_a front_table
